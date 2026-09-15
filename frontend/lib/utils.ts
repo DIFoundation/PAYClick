@@ -10,13 +10,14 @@ export function shortError(error: Error): string {
   return shortMessage.length > 80 ? `${shortMessage.slice(0, 80)}...` : shortMessage;
 }
 
-export function shareUrl(url: string): void {
+export function shareUrl(url: string): string {
   const input = document.createElement('input');
   input.value = url;
   document.body.appendChild(input);
   input.select();
   document.execCommand('copy');
   document.body.removeChild(input);
+  return url;
 }
 
 export function formatTokenAmount(amount: bigint, decimals: number): string {
@@ -28,6 +29,9 @@ export function formatTokenAmount(amount: bigint, decimals: number): string {
 }
 
 export function isValidLinkId(id: string): string {
+  if (!id) {
+    throw new Error('Invalid link ID: must be provided');
+  }
   const num = BigInt(id);
   if (num < BigInt(1)) {
     throw new Error('Invalid link ID: must be a positive integer');

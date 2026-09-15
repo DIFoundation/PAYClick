@@ -209,7 +209,7 @@ export type CreateLinkInput = {
   token: Address;
   amount: bigint; // in token's smallest unit
   memo?: string;
-  expiry?: number; // unix seconds; omit / 0 = never expires
+  expiry?: bigint; // unix seconds; omit / 0n = never expires
 };
 
 /** Create a payment link. Resolves with { hash, linkId } once confirmed on-chain. */
@@ -226,7 +226,7 @@ export function useCreatePaymentLink() {
       address: CONTRACT,
       abi: PAYCLICK_ABI,
       functionName: "createPaymentLink",
-      args: [input.token, input.amount, input.memo ?? "", input.expiry ?? 0],
+      args: [input.token, input.amount, input.memo ?? "", input.expiry ?? 0n],
       chainId: activeChain.id,
     });
     const receipt = await publicClient.waitForTransactionReceipt({ hash });
@@ -319,7 +319,7 @@ export function usePayPaymentLink() {
       setStep("confirmed");
       return payHash;
     } catch (e) {
-      const msg = shortError(e);
+      const msg = shortError(e instanceof Error ? e : new Error(String(e)));
       setError(msg);
       setStep("idle");
       throw e instanceof Error ? e : new Error(msg);

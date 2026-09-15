@@ -9,7 +9,7 @@ contract DeployPAYClick is Script {
     function run() external returns (PAYClick) {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         address treasury = vm.envAddress("TREASURY_ADDRESS");
-        address usdt = vm.envAddress("USDT_ADDRESS");
+        address usdt = vm.envAddress("USDT_ADDRESS_TESTNET");
 
         vm.startBroadcast(deployerPrivateKey);
         PAYClick payclick = new PAYClick(treasury, usdt);
