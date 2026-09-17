@@ -31,7 +31,7 @@ export default function Header() {
           PAY<span className="bg-linear-to-r from-brand to-purple-400 bg-clip-text text-transparent">Click</span>
         </Link>
         <nav className="flex items-center gap-6 text-sm">
-          {nav("/", "Create")}
+          {nav("/create", "Create")}
           {nav("/links", "My Links")}
           {isConnected ? (
             <Button onClick={() => disconnect()} className="btn-ghost px-3! py-2! text-xs border border-white/10">
