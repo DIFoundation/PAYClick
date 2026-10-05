@@ -147,6 +147,10 @@ export default function Home() {
           <p>
             1% protocol fee applies. All transactions are on-chain and transparent.
           </p>
+          <div className="flex flex-row gap-5">
+            <link href="https://www.botchain.ai/en/">BOTChain</link>
+            <link href="https://scan.botchain.ai/">Explorer</link>
+          </div>
         </div>
       </footer>
     </div>
