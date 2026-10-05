@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 export default function Home() {
@@ -147,9 +148,9 @@ export default function Home() {
           <p>
             1% protocol fee applies. All transactions are on-chain and transparent.
           </p>
-          <div className="flex flex-row gap-5">
-            <link href="https://www.botchain.ai/en/">BOTChain</link>
-            <link href="https://scan.botchain.ai/">Explorer</link>
+          <div className="flex flex-row gap-5 justify-center items-center mt-4">
+            <a href="https://www.botchain.ai/en/" target="_blank" rel="noopener noreferrer">BOTChain</a>
+            <a href="https://scan.botchain.ai/" target="_blank" rel="noopener noreferrer">Explorer</a>
           </div>
         </div>
       </footer>
